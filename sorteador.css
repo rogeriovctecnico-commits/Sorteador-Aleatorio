@@ -1,0 +1,99 @@
+/* Configuração Geral */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    /* Fonte moderna similar à da imagem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Imagem do Dado */
+.img_dado {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Título DevSorteio */
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Texto "Sortear um número" */
+p,
+.entrada-valor1 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Container dos Inputs */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    /* Coloca tudo na mesma linha */
+    align-items: center;
+    /* Alinha o texto e botões verticalmente no meio */
+    gap: 20px;
+    /* Dá um espaço entre o texto, inputs e botão */
+    margin-top: 30px;
+}
+
+/* Estilização dos Campos de Entrada */
+input {
+    background-color: #333333;
+    /* Cinza escuro da imagem */
+    color: white;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 100px;
+    text-align: center;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: #888;
+}
+
+/* Botão Sortear (Verde Limão) */
+button {
+    background-color: #aecb48;
+    /* Cor exata da imagem */
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 60px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0px 4px 15px rgba(174, 203, 72, 0.3);
+}
+
+button:hover {
+    background-color: #c4e05a;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Resultado */
+.saida-valor {
+    margin-top: 25px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#resultado {
+    color: #aecb48;
+}

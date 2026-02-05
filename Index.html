@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteador</title>
+    <!-- Removida a barra '/' inicial para evitar erro de caminho no Windows/Local -->
+    <link rel="stylesheet" href="sorteador.css">
+    <style>
+        /* Estilo básico para garantir a tela preta e centralização */
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .img_dado {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .inputs {
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .saida-valor {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #00ff00;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="dadovermelho250x160.jpg" alt="Sorteador" class="img_dado">
+
+    <h1>Sorteador</h1>
+
+    <div class="inputs">
+        <p>Sortear um número entre:</p>
+        <!-- Corrigido ID e nomes das classes -->
+        <input type="number" id="min" value="1" placeholder="Mínimo">
+        <input type="number" id="max" value="6" placeholder="Máximo">
+
+        <br><br>
+
+        <button onclick="sortear()">Sortear</button>
+
+        <div class="saida-valor">
+            O número sorteado foi:
+            <br>
+            <br>
+            <span id="resultado"></span>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        function sortear() {
+            // Captura os valores dos inputs dinamicamente
+            const min = parseInt(document.getElementById('min').value);
+            const max = parseInt(document.getElementById('max').value);
+
+            if (isNaN(min) || isNaN(max) || min >= max) {
+                alert("Por favor, insira um intervalo válido!");
+                return;
+            }
+
+            // Lógica de sorteio entre min e max
+            const num = Math.floor(Math.random() * (max - min + 1)) + min;
+
+            // Exibe o resultado no HTML
+            document.getElementById('resultado').innerText = num;
+        }
+    </script>
+</body>
+
+</html>
