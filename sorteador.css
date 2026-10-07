@@ -56,7 +56,7 @@ button {
 .topo {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 70px;
     padding: 28px 34px;
     margin-bottom: 24px;
     background: var(--branco);
