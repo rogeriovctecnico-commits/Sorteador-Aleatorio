@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,13 @@
 </head>
 
 <body>
-<div id="confetes" class="confetes" aria-hidden="true"></div>
+    <div id="confetes" class="confetes" aria-hidden="true"></div>
     <main class="app">
 
         <header class="topo">
             <div class="logo-area">
                 <!-- O logo da Dinâmica Corretora será colocado aqui -->
-                <div class="logo-placeholder">DINÂMICA</div>
+                <img src="logo-dinamica.png" alt="Dinâmica Corretora" class="logo-dinamica">
             </div>
 
             <div class="titulo-area">
@@ -38,23 +39,14 @@
                 </div>
 
                 <div class="campo-adicionar">
-                    <input
-                        type="text"
-                        id="nomeInput"
-                        placeholder="Digite o nome do participante"
-                        autocomplete="off"
-                    >
+                    <input type="text" id="nomeInput" placeholder="Digite o nome do participante" autocomplete="off">
                     <button id="adicionarBtn" class="btn btn-primary">
                         + Adicionar
                     </button>
                 </div>
 
                 <div class="entrada-lista">
-                    <textarea
-                        id="listaInput"
-                        placeholder="Ou cole vários nomes, um por linha..."
-                        rows="5"
-                    ></textarea>
+                    <textarea id="listaInput" placeholder="Ou cole vários nomes, um por linha..." rows="5"></textarea>
 
                     <button id="adicionarListaBtn" class="btn btn-secondary">
                         Adicionar lista
@@ -146,4 +138,5 @@
 
     </main>
 </body>
+
 </html>
