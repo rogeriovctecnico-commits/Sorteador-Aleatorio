@@ -1,166 +1,734 @@
-/* Configuração Geral */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+    --verde: #0f3d2b;
+    --verde-claro: #176044;
+    --dourado: #c8972a;
+    --dourado-claro: #e4bc61;
+    --creme: #faf6ed;
+    --branco: #ffffff;
+    --texto: #17221d;
+    --texto-suave: #69736d;
+    --borda: #e3e7e3;
+    --vermelho: #b33a3a;
+    --sombra: 0 18px 45px rgba(15, 61, 43, 0.10);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
-    /* Fonte moderna similar à da imagem */
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(200, 151, 42, 0.12), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(15, 61, 43, 0.10), transparent 30%),
+        var(--creme);
+    color: var(--texto);
+    font-family: 'DM Sans', Arial, sans-serif;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 32px 0 24px;
+}
+
+/* =========================
+   TOPO
+   ========================= */
+
+.topo {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 28px 34px;
+    margin-bottom: 24px;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 24px;
+    box-shadow: var(--sombra);
+}
+
+.logo-area {
+    flex: 0 0 auto;
+}
+
+.logo-placeholder {
+    width: 150px;
+    height: 76px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    margin: 0;
+    border: 2px dashed var(--dourado);
+    border-radius: 14px;
+    color: var(--verde);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
-/* Título DevSorteio */
+.titulo-area {
+    flex: 1;
+}
+
+.eyebrow {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dourado);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
 h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 10px 0;
+    margin-bottom: 5px;
+    color: var(--verde);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05;
 }
 
-/* Texto "Sortear um número" */
-p,
-.entrada-valor1 {
-    font-size: 1rem;
-    margin-bottom: 15px;
+h1 strong {
+    color: var(--dourado);
 }
 
-/* Container dos Inputs */
-.inputs {
+.titulo-area p {
+    margin-bottom: 0;
+    color: var(--texto-suave);
+    font-size: 15px;
+}
+
+/* =========================
+   PAINÉIS
+   ========================= */
+
+.painel {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.75fr) minmax(500px, 1.25fr);
+    gap: 24px;
+}
+
+.entrada,
+.sorteio,
+.historico-section {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 24px;
+    box-shadow: var(--sombra);
+}
+
+.entrada,
+.sorteio {
+    padding: 28px;
+}
+
+.section-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.section-title .numero {
+    display: flex;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--verde);
+    color: var(--branco);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.section-title h2 {
+    margin-bottom: 3px;
+    color: var(--verde);
+    font-size: 21px;
+}
+
+.section-title p {
+    margin-bottom: 0;
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+/* =========================
+   PARTICIPANTES
+   ========================= */
+
+.campo-adicionar {
+    display: flex;
+    gap: 8px;
+}
+
+input,
+textarea {
+    width: 100%;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: #fbfcfb;
+    color: var(--texto);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input {
+    min-width: 0;
+    padding: 13px 14px;
+}
+
+textarea {
+    display: block;
+    resize: vertical;
+    min-height: 100px;
+    padding: 13px 14px;
+    margin-top: 12px;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--dourado);
+    box-shadow: 0 0 0 3px rgba(200, 151, 42, 0.13);
+}
+
+.campo-adicionar .btn {
+    flex: 0 0 auto;
+}
+
+.entrada-lista {
+    margin-top: 4px;
+}
+
+.entrada-lista .btn {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.btn {
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 17px;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.btn-primary {
+    background: var(--verde);
+    color: var(--branco);
+}
+
+.btn-primary:hover {
+    background: var(--verde-claro);
+    box-shadow: 0 8px 20px rgba(15, 61, 43, 0.20);
+}
+
+.btn-secondary {
+    background: #eef3ef;
+    color: var(--verde);
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--borda);
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+.contador strong {
+    color: var(--dourado);
+    font-size: 20px;
+}
+
+.lista-participantes {
+    max-height: 310px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.lista-vazia,
+.historico-vazio {
+    padding: 28px 15px;
+    text-align: center;
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+.lista-vazia span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 30px;
+}
+
+.participante {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 4px;
+    border-bottom: 1px solid #edf0ed;
+}
+
+.participante:last-child {
+    border-bottom: 0;
+}
+
+.participante-nome {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.remover-participante {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 8px;
+    background: #f8eaea;
+    color: var(--vermelho);
+    font-size: 16px;
+}
+
+.remover-participante:hover {
+    background: #f3d8d8;
+}
+
+/* =========================
+   ROLETA
+   ========================= */
+
+.sorteio {
     display: flex;
     flex-direction: column;
-    /* Coloca tudo na mesma linha */
-    align-items: center;
-    /* Alinha o texto e botões verticalmente no meio */
-    gap: 20px;
-    /* Dá um espaço entre o texto, inputs e botão */
-    margin-top: 30px;
 }
 
-/* Estilização dos Campos de Entrada */
-input {
-    background-color: #333333;
-    /* Cinza escuro da imagem */
-    color: white;
-    border: 1px solid #444;
-    border-radius: 8px;
-    padding: 10px 15px;
-    width: 100px;
-    text-align: center;
-    font-size: 1.2rem;
-    outline: none;
-}
-
-input::placeholder {
-    color: #888;
-}
-
-/* Botão Sortear (Verde Limão) */
-button {
-    background-color: #aecb48;
-    /* Cor exata da imagem */
-    color: #000;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 60px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    box-shadow: 0px 4px 15px rgba(174, 203, 72, 0.3);
-}
-
-button:hover {
-    background-color: #c4e05a;
-    transform: scale(1.05);
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-/* Resultado */
-.saida-valor {
-    margin-top: 25px;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-#resultado {
-    color: #aecb48;
-}
-
-.wheel-container {
+.roleta-area {
     position: relative;
-    width: 350px;
-    height: 350px;
-    margin: 20px auto;
+    width: min(100%, 682px);
+    aspect-ratio: 1;
+    margin: 4px auto 24px;
 }
 
-#wheel {
+.roleta {
+    position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    border: 10px solid var(--verde);
     border-radius: 50%;
-    border: 8px solid #333;
-    transition: transform 5s cubic-bezier(0.15, 0, 0.15, 1);
-    background: #222;
-    /* Fundo padrão */
+    background: #eef3ef;
+    box-shadow:
+        0 16px 42px rgba(15, 61, 43, 0.22),
+        0 0 0 5px rgba(200, 151, 42, 0.95),
+        inset 0 0 0 4px rgba(255, 255, 255, 0.28);
+    transform: rotate(0deg);
+    transition: transform 9s cubic-bezier(0.08, 0.72, 0.12, 1);
+}
+
+.roleta::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ponteiro {
+    position: absolute;
+    z-index: 10;
+    top: -3px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 35px solid var(--dourado);
+    transform: translateX(-50%);
+    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.20));
+}
+
+.centro-roleta {
+    position: absolute;
+    z-index: 8;
+    top: 50%;
+    left: 50%;
+    width: 62px;
+    height: 62px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 5px solid var(--branco);
+    border-radius: 50%;
+    background: var(--verde);
+    color: var(--dourado);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    transform: translate(-50%, -50%);
 }
 
-.pointer {
+.centro-roleta span {
+    font-size: 25px;
+}
+
+.roleta-vazia {
     position: absolute;
-    top: -15px;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--texto-suave);
+}
+
+.roleta-vazia span {
+    font-size: 42px;
+    margin-bottom: 5px;
+}
+
+.roleta-vazia small {
+    font-size: 13px;
+}
+
+.fatia {
+    position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 40px solid #ff0000;
-    z-index: 10;
+    top: 50%;
+    width: 50%;
+    height: 2px;
+    transform-origin: 0 50%;
+    pointer-events: none;
 }
-/* Estilo básico para garantir a tela preta e centralização */
-body {
-    background-color: #000;
-    color: white;
-    font-family: Arial, sans-serif;
+
+.fatia span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 165px;
+    color: #ffffff;
+    font-weight: 900;
+    line-height: 1;
     text-align: center;
-    margin: 0;
-    padding: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.90),
+        -1px -1px 2px rgba(0, 0, 0, 0.55);
+    letter-spacing: -0.2px;
+    transform-origin: center center;
 }
 
-.img_dado {
-    max-width: 200px;
-    margin-bottom: 20px;
+/* =========================
+   SORTEIO
+   ========================= */
+
+.btn-sortear {
+    width: 100%;
+    padding: 16px;
+    background: var(--dourado);
+    color: #201a0d;
+    font-size: 17px;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 25px rgba(200, 151, 42, 0.22);
 }
 
-.inputs {
-    margin-top: 20px;
+.btn-sortear:hover:not(:disabled) {
+    background: var(--dourado-claro);
+    box-shadow: 0 13px 28px rgba(200, 151, 42, 0.30);
 }
 
-input {
+.btn-sortear span {
+    margin-right: 5px;
+}
+
+.resultado {
+    min-height: 94px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    padding: 15px;
+    border-radius: 15px;
+    background: #f3f7f4;
+    text-align: center;
+}
+
+.resultado-label {
+    color: var(--texto-suave);
+    font-size: 12px;
+}
+
+.resultado strong {
+    display: block;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    margin-top: 8px;
+    font-weight: 800;
+}
+
+.resultado.vencedor {
+    background: linear-gradient(135deg, #f9f1dc, #fffaf0);
+    border: 1px solid rgba(200, 151, 42, 0.35);
+    animation: aparecer 0.5s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   HISTÓRICO
+   ========================= */
+
+.historico-section {
+    margin-top: 24px;
+    padding: 28px;
+}
+
+.historico-section .section-title {
+    margin-bottom: 10px;
+}
+
+.historico {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.historico-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #eef3ef;
+    color: var(--verde);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.historico-item::before {
+    content: "✓";
+    color: var(--dourado);
+    font-weight: 700;
+}
+
+/* =========================
+   AÇÕES E RODAPÉ
+   ========================= */
+
+.acoes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn-outline {
+    border: 1px solid var(--verde);
+    background: transparent;
+    color: var(--verde);
+}
+
+.btn-outline:hover {
+    background: var(--verde);
+    color: var(--branco);
+}
+
+.btn-danger {
+    background: #f8eaea;
+    color: var(--vermelho);
+}
+
+.btn-danger:hover {
+    background: #f3d8d8;
+}
+
+.rodape {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
     padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-    border: none;
+    color: var(--texto-suave);
+    font-size: 12px;
 }
 
-button {
-    padding: 10px 20px;
-    cursor: pointer;
-    background: #ff0000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
+/* =========================
+   RESPONSIVO
+   ========================= */
+
+@media (max-width: 850px) {
+    .painel {
+        grid-template-columns: 1fr;
+    }
+
+    .sorteio {
+        order: -1;
+    }
 }
 
-.saida-valor {
-    font-size: 1.5rem;
-    margin-top: 20px;
-    color: #00ff00;
+@media (max-width: 600px) {
+    .app {
+        width: min(100% - 20px, 600px);
+        padding-top: 10px;
+    }
+
+    .topo {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 18px;
+    }
+
+    .logo-placeholder {
+        width: 130px;
+        height: 62px;
+    }
+
+    .titulo-area p {
+        font-size: 14px;
+    }
+
+    .entrada,
+    .sorteio,
+    .historico-section {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .campo-adicionar {
+        flex-direction: column;
+    }
+
+    .roleta-area {
+        width: min(100%, 340px);
+    }
+
+    .roleta {
+        position: relative;
+        width: min(78vw, 720px);
+        height: min(78vw, 720px);
+        max-width: 720px;
+        max-height: 720px;
+        min-width: 500px;
+        min-height: 500px;
+        border-radius: 50%;
+        border: 12px solid var(--verde);
+        box-shadow:
+            0 0 0 6px var(--dourado),
+            0 20px 50px rgba(15, 61, 43, 0.22);
+        overflow: hidden;
+        transition:
+            transform 9s cubic-bezier(0.08, 0.72, 0.12, 1);
+        background: #eef3ef;
+        flex-shrink: 0;
+    }
+
+    .acoes {
+        flex-direction: column;
+    }
+
+    .acoes .btn {
+        width: 100%;
+    }
+}
+/* =========================
+   FESTA DO SORTEIO
+   ========================= */
+
+.confetes {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confete {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 18px;
+    opacity: 0;
+    animation: cairConfete 3.2s ease-out forwards;
+}
+
+@keyframes cairConfete {
+    0% {
+        opacity: 1;
+        transform: translate3d(0, -20px, 0) rotate(0deg);
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(var(--deslocamento), 105vh, 0)
+                   rotate(var(--rotacao));
+    }
+}
+
+.resultado.vencedor strong {
+    animation:
+        aparecer 0.5s ease,
+        pulsarVencedor 1.2s ease-in-out 0.5s 2;
+}
+
+@keyframes pulsarVencedor {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
 }

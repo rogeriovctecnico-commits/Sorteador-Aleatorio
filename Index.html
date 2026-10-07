@@ -1,43 +1,149 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="sorteador.js" defer></script>
+    <meta name="description" content="Sorteador aleatório de nomes da Dinâmica Corretora">
+    <title>Sorteador | Dinâmica Corretora</title>
     <link rel="stylesheet" href="sorteador.css">
-    </link>
-    <title>Sorteador</title>
-    <!-- Removida a barra '/' inicial para evitar erro de caminho no Windows/Local -->
-    <style>
-
-    </style>
+    <script src="sorteador.js" defer></script>
 </head>
 
 <body>
-    <img src="dadovermelho250x160.jpg" alt="Sorteador" class="img_dado">
+<div id="confetes" class="confetes" aria-hidden="true"></div>
+    <main class="app">
 
-    <h1>Sorteador</h1>
+        <header class="topo">
+            <div class="logo-area">
+                <!-- O logo da Dinâmica Corretora será colocado aqui -->
+                <div class="logo-placeholder">DINÂMICA</div>
+            </div>
 
-    <div class="inputs">
-        <p>Sortear um número entre:</p>
-        <!-- Corrigido ID e nomes das classes -->
-        <input type="number" class="min" placeholder="Mínimo">
-        <input type="number" class="max" placeholder="Máximo">
+            <div class="titulo-area">
+                <span class="eyebrow">DINÂMICA CORRETORA</span>
+                <h1>Sorteador <strong>Aleatório</strong></h1>
+                <p>Adicione os participantes e deixe a sorte decidir.</p>
+            </div>
+        </header>
 
-        <br><br>
+        <section class="painel">
 
-        <!-- <button onclick="GenerateNumber">Sortear</button id="sortear"> -->
-        <button onclick="GenerateNumber()">Sortear</button id="sortear">
+            <div class="entrada">
+                <div class="section-title">
+                    <span class="numero">01</span>
+                    <div>
+                        <h2>Participantes</h2>
+                        <p>Adicione os nomes que participarão do sorteio.</p>
+                    </div>
+                </div>
 
-        <div class="saida-valor-div">
-            O número sorteado foi:
-            <br>
-            <span class="saida-valor"></span>
-            <br>
-        </div>
-    </div>
+                <div class="campo-adicionar">
+                    <input
+                        type="text"
+                        id="nomeInput"
+                        placeholder="Digite o nome do participante"
+                        autocomplete="off"
+                    >
+                    <button id="adicionarBtn" class="btn btn-primary">
+                        + Adicionar
+                    </button>
+                </div>
+
+                <div class="entrada-lista">
+                    <textarea
+                        id="listaInput"
+                        placeholder="Ou cole vários nomes, um por linha..."
+                        rows="5"
+                    ></textarea>
+
+                    <button id="adicionarListaBtn" class="btn btn-secondary">
+                        Adicionar lista
+                    </button>
+                </div>
+
+                <div class="contador">
+                    <span>Participantes disponíveis</span>
+                    <strong id="contadorParticipantes">0</strong>
+                </div>
+
+                <div id="listaParticipantes" class="lista-participantes">
+                    <div class="lista-vazia">
+                        <span>👥</span>
+                        <p>Nenhum participante adicionado.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sorteio">
+
+                <div class="section-title">
+                    <span class="numero">02</span>
+                    <div>
+                        <h2>Faça o sorteio</h2>
+                        <p>A roleta elimina automaticamente o nome sorteado.</p>
+                    </div>
+                </div>
+
+                <div class="roleta-area">
+                    <div class="ponteiro"></div>
+
+                    <div id="roleta" class="roleta">
+                        <div class="roleta-vazia">
+                            <span>🎲</span>
+                            <small>Adicione participantes</small>
+                        </div>
+                    </div>
+
+                    <div class="centro-roleta">
+                        <span>★</span>
+                    </div>
+                </div>
+
+                <button id="sortearBtn" class="btn btn-sortear" disabled>
+                    <span>🎯</span>
+                    SORTEAR
+                </button>
+
+                <div id="resultado" class="resultado" aria-live="polite">
+                    <span class="resultado-label">Aguardando sorteio</span>
+                    <strong id="nomeSorteado">—</strong>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="historico-section">
+            <div class="section-title">
+                <span class="numero">03</span>
+                <div>
+                    <h2>Histórico</h2>
+                    <p>Participantes que já foram sorteados.</p>
+                </div>
+            </div>
+
+            <div id="historico" class="historico">
+                <div class="historico-vazio">
+                    Nenhum sorteio realizado ainda.
+                </div>
+            </div>
+        </section>
+
+        <footer class="acoes">
+            <button id="reiniciarBtn" class="btn btn-outline">
+                ↻ Reiniciar rodada
+            </button>
+
+            <button id="limparBtn" class="btn btn-danger">
+                × Limpar tudo
+            </button>
+        </footer>
+
+        <footer class="rodape">
+            <span>Dinâmica Corretora</span>
+            <span>•</span>
+            <span>Sorteador Aleatório</span>
+        </footer>
+
+    </main>
 </body>
-
 </html>
