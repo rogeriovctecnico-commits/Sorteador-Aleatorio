@@ -56,7 +56,7 @@ button {
 .topo {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 50px;
     padding: 28px 34px;
     margin-bottom: 24px;
     background: var(--branco);
@@ -679,6 +679,7 @@ textarea:focus {
         width: 100%;
     }
 }
+
 /* =========================
    FESTA DO SORTEIO
    ========================= */
@@ -712,8 +713,7 @@ textarea:focus {
 
     100% {
         opacity: 0;
-        transform: translate3d(var(--deslocamento), 105vh, 0)
-                   rotate(var(--rotacao));
+        transform: translate3d(var(--deslocamento), 105vh, 0) rotate(var(--rotacao));
     }
 }
 
@@ -724,7 +724,9 @@ textarea:focus {
 }
 
 @keyframes pulsarVencedor {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
 
